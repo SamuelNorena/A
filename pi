@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double pi_aprox(int n) {
+    double value = 0;
+
+    for (int k = 0; k <= n; k++) {
+        double multi = (double) 1 / pow(16, k);
+        double innerparen = (double) 4 / (8 * k + 1);
+        innerparen -= (double) 2 / (8 * k + 4);
+        innerparen -= (double) 1 / (8 * k + 5);
+        innerparen -= (double) 1 / (8 * k + 6);
+        value += (double) multi * innerparen;
+    }
+   
+    return value;
+}
+
+int main()
+{
+    cout.precision(16);
+    cout.setf(ios::scientific);
+
+    for (int n = 1; n <= 20; n++) {
+        cout << "Iteracion " << n << endl;
+        double value = pi_aprox(n);
+        cout << "El valor de Pi es " << value << endl;
+
+        double relative = (1 - value / M_PI);
+        cout << "El relative error es " << relative << endl;
+    } 
+
+    return 0;
+};
