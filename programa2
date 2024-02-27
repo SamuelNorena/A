@@ -1,0 +1,25 @@
+#include <iostream>
+
+long long lpf (long long n) {           //lpf como función, define al factor primo más grande del long long n (long long ayuda para trabajar con números muy MUY grandes.)
+    long long larg = 0;
+    for (long long k = 2; k <= n / k; k++) {            //el loop itera de 2 a la raíz de n, porque un factor primo no puede ser mayor a la raíz cuadrada del número
+        while (n % k == 0) {
+            larg = k;
+            n = n / k;
+            }
+        }
+
+    if (n > larg) {         //si n es más grande que su maximo factor primo, se actualiza larg a n
+        larg = n;
+    }
+    
+    return larg;
+}
+
+int main() {            //la main lee el n de la línea de comandos
+    long long n;
+    std::cin >> n;
+    std::cout << lpf(n) << "\n";            //se llama la función, evalúa a n y retorna larg
+
+    return 0;           //se finaliza el proceso
+}
