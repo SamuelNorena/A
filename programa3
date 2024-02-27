@@ -1,0 +1,20 @@
+#include <iostream>
+
+int main() {
+    int a = 0;
+    int b = 1;
+    int fb = 0;  //se inicializan las variables respectivamente
+    int n;
+    std::cin >> n;  //n se lee de la línea de comandos
+    while(b <= n) {
+        fb += (b % 2 != 0) ?  //mientras b sea menor o igual a n, y por definición de módulo sea impar, se suma a fb
+        b : 0;
+
+        int c = a;
+        a = b;
+        b = c + a;   //la secuencia fibonacci se escribe cíclicamente para actualizar continuamente las variables
+    }
+
+    std::cout << fb - 1 << "\n";   //se arregla el valor a imprimir con un -1 y obvio, un cout
+    return 0;
+}
