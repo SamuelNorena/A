@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cmath>
+
+bool isprime (int n) {           //se define la función isprime
+    bool isprime = true;
+    if (n <= 1) {
+        isprime = false;
+    }
+    else {
+        for (int k = 2; k <= sqrt(n); k++) {        //se optimiza con sqrt en lugar de n / 2
+        if (n % k == 0){
+            isprime = false;
+            }
+        }
+    }
+    return isprime;
+}
+
+int main () {
+    int n;
+    std::cin >> n;                          // se lee n desde la línea de comandos
+    int sum = 0;                        //se inicializa la variable sum en 0
+    for (int k = 2; k <= n; k++) {
+        if (isprime(k)) {
+            sum += k;               //sum es definida
+        }
+    }
+    std::cout << sum << "\n";      //se imprime sum y se finaliza el proceso
+    return 0;
+}
